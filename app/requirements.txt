@@ -1,0 +1,4 @@
+flask
+flask_restful
+mariadb==1.0.11
+
