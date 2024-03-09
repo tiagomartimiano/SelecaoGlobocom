@@ -4,6 +4,16 @@ import mariadb
 import sys
 import json
 
+# Front
+app = Flask(__name__)
+
+@app.route('/')
+def index()
+    return "<center><h1>Flash App deployment on AZURE</h1><center>"
+
+if __name__ == "__main__":
+    app.run()   
+        
 # Connect to MariaDB Platform
 try:
     conn = mariadb.connect(
