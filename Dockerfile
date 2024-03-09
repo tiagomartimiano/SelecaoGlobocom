@@ -9,7 +9,7 @@ RUN apt-get install libmariadb3 -y
 
 COPY . /usr/src/
 
-RUN pip install --upgrade pip
+#RUN pip install --upgrade pip
 RUN pip install --upgrade setuptools
 RUN pip install --no-cache-dir -r app/requirements.txt
 
