@@ -17,17 +17,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-
-
-      # - name: Mariadb install    
-      #   uses: getong/mariadb-action@v1.1
-      #   with:
-      #     host port: 3306
-      #     container port: 3306
-      #     mariadb version: 'latest'
-      #     mysql database: 'materiasglobo'
-      #     mysql root password: ${{ secrets.RootPassword }} 
-      #     mysql password: ${{ secrets.DatabasePassword }}
+      - name: Mariadb install    
+        uses: getong/mariadb-action@v1.1
+        with:
+          host port: 3306
+          container port: 3306
+          mariadb version: 'latest'
+          mysql database: 'materiasglobo'
+          mysql root password: ${{ secrets.RootPassword }} 
+          mysql password: ${{ secrets.DatabasePassword }}
       
       #Mariadb install
       # - name: Setup MariaDB
@@ -38,11 +36,6 @@ jobs:
       #       MYSQL_DATABASE: 'testdb'
       #       MYSQL_USER: 'testuser'
       #       MYSQL_PASSWORD: ${{ secrets.DB_PASSWORD }
-
-      - name: Maridb Install
-        run:
-          curl -sS https://downloads.mariadb.com/MariaDB/mariadb_repo_setup | bash
-          apt-get update
 
       - name: Set up Python version
         uses: actions/setup-python@v1
