@@ -17,6 +17,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+
+
       # - name: Mariadb install    
       #   uses: getong/mariadb-action@v1.1
       #   with:
@@ -28,14 +30,19 @@ jobs:
       #     mysql password: ${{ secrets.DatabasePassword }}
       
       #Mariadb install
-      - name: Setup MariaDB
-        uses: docker://mariadb:latest
-        with:
-          env:
-            MYSQL_ROOT_PASSWORD: ${{ secrets.DB_ROOT_PASSWORD }}
-            MYSQL_DATABASE: 'testdb'
-            MYSQL_USER: 'testuser'
-            MYSQL_PASSWORD: ${{ secrets.DB_PASSWORD }
+      # - name: Setup MariaDB
+      #   uses: docker://mariadb:latest
+      #   with:
+      #     env:
+      #       MYSQL_ROOT_PASSWORD: ${{ secrets.DB_ROOT_PASSWORD }}
+      #       MYSQL_DATABASE: 'testdb'
+      #       MYSQL_USER: 'testuser'
+      #       MYSQL_PASSWORD: ${{ secrets.DB_PASSWORD }
+
+      - name: Maridb Install
+        run:
+          curl -sS https://downloads.mariadb.com/MariaDB/mariadb_repo_setup | bash
+          apt-get update
 
       - name: Set up Python version
         uses: actions/setup-python@v1
@@ -48,7 +55,10 @@ jobs:
           source venv/bin/activate
       
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: |
+          apt-get install libmariadb-dev -y
+          apt-get install libmariadb3 -y
+          pip install -r requirements.txt
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
