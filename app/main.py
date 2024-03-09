@@ -11,9 +11,6 @@ app = Flask(__name__)
 def index()
     return "<center><h1>Flash App deployment on AZURE</h1><center>"
 
-if __name__ == "__main__":
-    app.run()   
-        
 # Connect to MariaDB Platform
 try:
     conn = mariadb.connect(
@@ -77,4 +74,4 @@ api.add_resource(ListaComentarios, '/api/comment/list/<idmateria>')
 api.add_resource(Monitoria, '/api/monitoria')
 
 if __name__ == '__main__':
-    app.run(debug=True, host="0.0.0.0")
+    app.run(debug=True, host="20.119.0.55")
