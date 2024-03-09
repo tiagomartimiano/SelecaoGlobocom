@@ -4,13 +4,6 @@ import mariadb
 import sys
 import json
 
-# Front
-app = Flask(__name__)
-
-@app.route('/')
-def index()
-    return "<center><h1>Flash App deployment on AZURE</h1><center>"
-
 # Connect to MariaDB Platform
 try:
     conn = mariadb.connect(
@@ -31,6 +24,10 @@ cursor=conn.cursor()
 
 app = Flask(__name__)
 api = Api(app)
+
+@app.route('/')
+def index()
+    return "<center><h1>Flash App deployment on AZURE</h1><center>"
 
 # Comment creation class
 class CriaComentarios(Resource):
