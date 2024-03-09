@@ -26,7 +26,8 @@ jobs:
       #     mysql database: 'materiasglobo'
       #     mysql root password: ${{ secrets.RootPassword }} 
       #     mysql password: ${{ secrets.DatabasePassword }}
-
+      
+      #Mariadb install
       - name: Setup MariaDB
         uses: docker://mariadb:latest
         with:
