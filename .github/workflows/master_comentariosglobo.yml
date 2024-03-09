@@ -17,15 +17,24 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Mariadb install    
-        uses: getong/mariadb-action@v1.1
+      # - name: Mariadb install    
+      #   uses: getong/mariadb-action@v1.1
+      #   with:
+      #     host port: 3306
+      #     container port: 3306
+      #     mariadb version: 'latest'
+      #     mysql database: 'materiasglobo'
+      #     mysql root password: ${{ secrets.RootPassword }} 
+      #     mysql password: ${{ secrets.DatabasePassword }}
+
+      - name: Setup MariaDB
+        uses: docker://mariadb:latest
         with:
-          host port: 3306
-          container port: 3306
-          mariadb version: 'latest'
-          mysql database: 'materiasglobo'
-          mysql root password: ${{ secrets.RootPassword }} 
-          mysql password: ${{ secrets.DatabasePassword }}
+          env:
+            MYSQL_ROOT_PASSWORD: ${{ secrets.DB_ROOT_PASSWORD }}
+            MYSQL_DATABASE: 'testdb'
+            MYSQL_USER: 'testuser'
+            MYSQL_PASSWORD: ${{ secrets.DB_PASSWORD }
 
       - name: Set up Python version
         uses: actions/setup-python@v1
