@@ -49,8 +49,8 @@ jobs:
       
       - name: Install dependencies
         run: |
-          apt-get install libmariadb-dev -y
-          apt-get install libmariadb3 -y
+          sudo apt-get install libmariadb-dev -y
+          sudo apt-get install libmariadb3 -y
           pip install -r requirements.txt
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
