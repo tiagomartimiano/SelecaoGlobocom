@@ -1,3 +1,7 @@
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+# More info on Python, GitHub Actions, and Azure App Service: https://aka.ms/python-webapps-actions
+
 name: Build and deploy Python app to Azure Web App - comentariosglobo
 
 on:
@@ -13,26 +17,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Mariadb install    
-        uses: getong/mariadb-action@v1.1
-        with:
-          host port: 3306
-          container port: 3306
-          mariadb version: 'latest'
-          mysql database: 'materiasglobo'
-          mysql root password: ${{ secrets.RootPassword }} 
-          mysql password: ${{ secrets.DatabasePassword }}
-      
-      #Mariadb install
-      # - name: Setup MariaDB
-      #   uses: docker://mariadb:latest
-      #   with:
-      #     env:
-      #       MYSQL_ROOT_PASSWORD: ${{ secrets.DB_ROOT_PASSWORD }}
-      #       MYSQL_DATABASE: 'testdb'
-      #       MYSQL_USER: 'testuser'
-      #       MYSQL_PASSWORD: ${{ secrets.DB_PASSWORD }
-
       - name: Set up Python version
         uses: actions/setup-python@v1
         with:
@@ -44,10 +28,7 @@ jobs:
           source venv/bin/activate
       
       - name: Install dependencies
-        run: |
-          sudo apt-get install libmariadb-dev -y
-          sudo apt-get install libmariadb3 -y
-          pip install -r requirements.txt
+        run: pip install -r requirements.txt
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
@@ -80,6 +61,7 @@ jobs:
       - name: Unzip artifact for deployment
         run: unzip release.zip
 
+<<<<<<< HEAD
       
       - name: Login to Azure
         uses: azure/login@v1
@@ -87,6 +69,15 @@ jobs:
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_A562B469B42C4BF093A0A3CC1BDA959B }}
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_D2B45EA129B641B0896B613F21B6FDD9 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_66B4982F501A489E873154B467E23336 }}
+=======
+      
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_A562B469B42C4BF093A0A3CC1BDA959B }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_D2B45EA129B641B0896B613F21B6FDD9 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_66B4982F501A489E873154B467E23336 }}
+>>>>>>> 1e8fd1a9268de776a97bfc33e3e85418efa3b96f
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
