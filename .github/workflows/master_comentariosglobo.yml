@@ -61,7 +61,6 @@ jobs:
       - name: Unzip artifact for deployment
         run: unzip release.zip
 
-<<<<<<< HEAD
       
       - name: Login to Azure
         uses: azure/login@v1
@@ -69,20 +68,10 @@ jobs:
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_A562B469B42C4BF093A0A3CC1BDA959B }}
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_D2B45EA129B641B0896B613F21B6FDD9 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_66B4982F501A489E873154B467E23336 }}
-=======
-      
-      - name: Login to Azure
-        uses: azure/login@v1
-        with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_A562B469B42C4BF093A0A3CC1BDA959B }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_D2B45EA129B641B0896B613F21B6FDD9 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_66B4982F501A489E873154B467E23336 }}
->>>>>>> 1e8fd1a9268de776a97bfc33e3e85418efa3b96f
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
         with:
           app-name: 'comentariosglobo'
-          slot-name: 'Production'
-          
+          slot-name: 'Production'      
