@@ -1,7 +1,7 @@
 version: '3'
 services:
   mariadb:
-    image: tiagouruba2016/mariadb:1.0
+    image: tiagouruba2016/mariadb:1.1
     container_name: "mariadb"
     ports:
       - 3306:3306
