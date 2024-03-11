@@ -15,4 +15,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 EXPOSE 5000
 
-CMD ["python", "/usr/src/main.py"]
+CMD ["python", "/usr/src/app.py"]

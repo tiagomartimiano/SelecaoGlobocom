@@ -8,8 +8,8 @@ import json
 try:
     conn = mariadb.connect(
         user="root",
-        password="teste",
-        host="mariadb",
+        password="",
+        host="52.146.93.110",
         port=3306,
         database="materiasglobo"
 
